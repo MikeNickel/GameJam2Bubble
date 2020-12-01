@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    int mapSizeX = 20;
-    int mapSizeY = 12;
+    public int mapSizeX = 22;
+    public int mapSizeY = 12;
     int[,] mapGrid;
-    int xPos = 1;
-    int yPos = 1;
+    public int xPos = 2;
+    public int yPos = 2;
+    public int health = 10;
+    public int armor = 2;
+    public int attack = 5;
+    int maxHealth = 10;
     int startX;
     int startY;
     bool moved;
@@ -26,6 +30,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         moved = false;
+
+        PlayerPrefs.SetInt("hp", health);
 
         if (Input.GetKeyDown("down"))
         {
@@ -142,6 +148,7 @@ public class Player : MonoBehaviour
 
     public int GetXPos()
     {
+        Debug.Log("Getting x position");
         return xPos;
     }
     public int GetYPos()
