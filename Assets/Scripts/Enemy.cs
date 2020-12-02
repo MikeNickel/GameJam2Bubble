@@ -22,18 +22,30 @@ public class Enemy : MonoBehaviour
         pos = transform.position;
         xPos = (int) pos.x;
         yPos = (int) pos.y;
+
+            //StartCoroutine(Hold());
     }
 
     // Update is called once per frame
     void Update()
     {
+        //see if player runs into enemy, start combat once this happens.
         playerPosX = other.GetXPos();
         playerPosY = other.GetYPos();
         Debug.Log("player x =" + playerPosX);
         Debug.Log("player y =" + playerPosY);
-        if (playerPosX == xPos && playerPosY == yPos)
+        if (playerPosX == xPos && playerPosY == yPos && TurnBasedCombat.victory == false)
         {
             SceneManager.LoadScene("CombatScene");
+        }
+        else if(playerPosX == xPos && playerPosY == yPos && TurnBasedCombat.victory == true)
+        {
+            Died();
+            TurnBasedCombat.victory = false;
+        }
+        else
+        {
+            //do nothing
         }
     }
 
@@ -50,5 +62,18 @@ public class Enemy : MonoBehaviour
                 mapGrid[x, y] = 0;
             }
         }
+    }
+
+    public void Died()
+    {
+        if (PlayerPrefs.GetInt("whereX") == xPos && PlayerPrefs.GetInt("whereY") == yPos)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private IEnumerator Hold()
+    {
+        yield return new WaitForSeconds(2f);
     }
 }

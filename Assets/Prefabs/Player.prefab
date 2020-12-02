@@ -100,6 +100,7 @@ MonoBehaviour:
   health: 10
   armor: 1
   attack: 3
+  evil: {fileID: 2115086905231508115, guid: 5e32d92565064bb4c840da53ba17f1e4, type: 3}
 --- !u!1 &751816791193583830
 GameObject:
   m_ObjectHideFlags: 0

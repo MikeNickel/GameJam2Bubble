@@ -13,21 +13,35 @@ public class Player : MonoBehaviour
     public int armor;
     public int attack;
     //int maxHealth = 10;
-    int startX;
-    int startY;
+    //int startX;
+    //int startY;
     //bool moved;
     bool fought = false;
-    int foughtChecker = 0 ;
+    int foughtChecker = 0;
+
+    //reference enemy gameobject
+    public Enemy evil;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        startX = xPos;
-        startY = yPos;
+        //startX = xPos;
+        //startY = yPos;
         GenerateMapData();
 
-        if(TurnBasedCombat.cameBackFromFight == true)
+        if (TurnBasedCombat.victory == true)
+        {
+            xPos = PlayerPrefs.GetInt("whereX");
+            yPos = PlayerPrefs.GetInt("whereY");
+            transform.Translate(xPos-2, yPos-2, 0);
+        }
+        else
+        {
+            //do nothing
+        }
+
+        if (TurnBasedCombat.cameBackFromFight == true)
         {
             foughtChecker = PlayerPrefs.GetInt("foughtTheGoodFight");
         }
@@ -44,6 +58,7 @@ public class Player : MonoBehaviour
         else
         {
             fought = true;
+            //check if victory or fled
         }
         //if no, then that means game start, have base stats.
         if(fought == false)
@@ -85,6 +100,8 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
+                    PlayerPrefs.SetInt("xPs", xPos);
+                    PlayerPrefs.SetInt("yPs", yPos);
                     transform.Translate(0, -1, 0);
                     //moved = true;
                 }
@@ -109,6 +126,8 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
+                    PlayerPrefs.SetInt("xPs", xPos);
+                    PlayerPrefs.SetInt("yPs", yPos);
                     transform.Translate(0, +1, 0);
                     //moved = true;
                 }
@@ -133,6 +152,8 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
+                    PlayerPrefs.SetInt("xPs", xPos);
+                    PlayerPrefs.SetInt("yPs", yPos);
                     transform.Translate(-1, 0, 0);
                    // moved = true;
                 }
@@ -157,6 +178,8 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
+                    PlayerPrefs.SetInt("xPs", xPos);
+                    PlayerPrefs.SetInt("yPs", yPos);
                     transform.Translate(+1, 0, 0);
                     //moved = true;
                 }
