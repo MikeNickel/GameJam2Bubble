@@ -9,13 +9,15 @@ public class Player : MonoBehaviour
     int[,] mapGrid;
     public int xPos = 2;
     public int yPos = 2;
-    public int health = 10;
-    public int armor = 1;
-    public int attack = 3;
-    int maxHealth = 10;
+    public int health;
+    public int armor;
+    public int attack;
+    //int maxHealth = 10;
     int startX;
     int startY;
-    bool moved;
+    //bool moved;
+    bool fought = false;
+    int foughtChecker = 0 ;
 
 
     // Start is called before the first frame update
@@ -24,17 +26,50 @@ public class Player : MonoBehaviour
         startX = xPos;
         startY = yPos;
         GenerateMapData();
+
+        if(TurnBasedCombat.cameBackFromFight == true)
+        {
+            foughtChecker = PlayerPrefs.GetInt("foughtTheGoodFight");
+        }
+        else
+        {
+            //do nothing
+        }
+
+        //check if battled or not when starting scene.
+        if (foughtChecker == 0)
+        {
+            fought = false;
+        }
+        else
+        {
+            fought = true;
+        }
+        //if no, then that means game start, have base stats.
+        if(fought == false)
+        {
+            health = 10;
+            armor = 1;
+            attack = 3;
+        }
+        //otherwise, keep track of stats after last fight.
+        else
+        {
+            health = PlayerPrefs.GetInt("fleeHp");
+            armor = PlayerPrefs.GetInt("fleeArmor");
+            attack = PlayerPrefs.GetInt("fleeAttack");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        moved = false;
-
+        //keeping track of player stats to bring to combatscene
         PlayerPrefs.SetInt("hp", health);
         PlayerPrefs.SetInt("armor", armor);
         PlayerPrefs.SetInt("attack", attack);
 
+        //movement code
         if (Input.GetKeyDown("down"))
         {
             if (yPos > 1)
@@ -51,7 +86,7 @@ public class Player : MonoBehaviour
                 else
                 {
                     transform.Translate(0, -1, 0);
-                    moved = true;
+                    //moved = true;
                 }
             }
             else
@@ -75,7 +110,7 @@ public class Player : MonoBehaviour
                 else
                 {
                     transform.Translate(0, +1, 0);
-                    moved = true;
+                    //moved = true;
                 }
             }
             else
@@ -99,7 +134,7 @@ public class Player : MonoBehaviour
                 else
                 {
                     transform.Translate(-1, 0, 0);
-                    moved = true;
+                   // moved = true;
                 }
             }
             else
@@ -123,7 +158,7 @@ public class Player : MonoBehaviour
                 else
                 {
                     transform.Translate(+1, 0, 0);
-                    moved = true;
+                    //moved = true;
                 }
             }
             else

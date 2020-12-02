@@ -8,7 +8,11 @@ public class TurnBasedCombat : MonoBehaviour
 {
     public InitialScreen initWin;
     public CombatScreen fWin;
+    public InfoScreen infoWin;
 
+    public static bool cameBackFromFight=false;
+
+    int fought = 1;
     //player stats
     public int playerHp;
     public int playerArmor;
@@ -26,6 +30,14 @@ public class TurnBasedCombat : MonoBehaviour
     public Text eHp;
     public Text eAr;
     public Text eAt;
+
+    //attacking variable
+    int damage;
+
+    //info window message variables
+    public Text damageDealt;
+
+
 
     void Start()
     {
@@ -55,6 +67,27 @@ public class TurnBasedCombat : MonoBehaviour
         fWin.Activate();
     }
 
+    public void Attack()
+    {
+        fWin.DeActivate();
+        infoWin.Activate();
+        StartCoroutine(AttackEnemy());
+    }
+
+    private IEnumerator AttackEnemy()
+    {
+        damage = playerAttack + UnityEngine.Random.Range(-1, 1);
+        damageDealt.text = ("You deal " + damage + " damage!");
+        enemyHp -= damage;
+        yield return new WaitForSeconds(2);
+        damage = enemyAttack + UnityEngine.Random.Range(-1, 1);
+        damageDealt.text = ("The gum attacks you for " + damage + " damage!");
+        playerHp -= damage;
+        yield return new WaitForSeconds(2);
+        infoWin.DeActivate();
+        initWin.Activate();
+
+    }
     public void Back()
     {
         fWin.DeActivate();
@@ -63,6 +96,13 @@ public class TurnBasedCombat : MonoBehaviour
 
     public void Flee()
     {
+        //set the stats before fleeing
+        PlayerPrefs.SetInt("fleeHp", playerHp);
+        PlayerPrefs.SetInt("fleeArmor", playerArmor);
+        PlayerPrefs.SetInt("fleeAttack", playerAttack);
+        //set the stats after fleeing
+        PlayerPrefs.SetInt("foughtTheGoodFight", fought);
+        cameBackFromFight = true;
         SceneManager.LoadScene("Overworld");
     }
 }
