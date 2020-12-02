@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     public Player other;
     public int playerPosX;
     public int playerPosY;
+    int enemiesDefeated;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,10 @@ public class Enemy : MonoBehaviour
         pos = transform.position;
         xPos = (int) pos.x;
         yPos = (int) pos.y;
+        if (enemiesDefeated == 2)
+        {
+            Destroy(gameObject);
+        }
 
             //StartCoroutine(Hold());
     }
@@ -42,6 +47,7 @@ public class Enemy : MonoBehaviour
         {
             Died();
             TurnBasedCombat.victory = false;
+            enemiesDefeated++;
         }
         else
         {
