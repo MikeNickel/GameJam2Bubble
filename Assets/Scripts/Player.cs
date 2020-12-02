@@ -10,8 +10,8 @@ public class Player : MonoBehaviour
     public int xPos = 2;
     public int yPos = 2;
     public int health = 10;
-    public int armor = 2;
-    public int attack = 5;
+    public int armor = 1;
+    public int attack = 3;
     int maxHealth = 10;
     int startX;
     int startY;
@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
         moved = false;
 
         PlayerPrefs.SetInt("hp", health);
+        PlayerPrefs.SetInt("armor", armor);
+        PlayerPrefs.SetInt("attack", attack);
 
         if (Input.GetKeyDown("down"))
         {

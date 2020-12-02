@@ -97,7 +97,9 @@ MonoBehaviour:
   mapSizeY: 14
   xPos: 2
   yPos: 2
-  health: 0
+  health: 10
+  armor: 1
+  attack: 3
 --- !u!1 &751816791193583830
 GameObject:
   m_ObjectHideFlags: 0
