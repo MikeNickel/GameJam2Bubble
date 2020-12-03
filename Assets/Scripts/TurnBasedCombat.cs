@@ -10,9 +10,10 @@ public class TurnBasedCombat : MonoBehaviour
     public InitialScreen initWin;
     public CombatScreen fWin;
     public InfoScreen infoWin;
+    public InvScreen invtor;
 
     //reference enemy script on enemy objects
-    public Enemy other;
+    //public Enemy other;
 
     public static bool cameBackFromFight=false;
     public static bool victory = false;
@@ -47,7 +48,7 @@ public class TurnBasedCombat : MonoBehaviour
     int damage;
 
     //info window message variables
-    public Text damageDealt;
+    public Text info;
 
 
 
@@ -89,6 +90,12 @@ public class TurnBasedCombat : MonoBehaviour
         fWin.Activate();
     }
 
+    public void InventoryAccess()
+    {
+        initWin.DeActivate();
+        invtor.Activate();
+    }
+
     public void Attack()
     {
         fWin.DeActivate();
@@ -100,16 +107,16 @@ public class TurnBasedCombat : MonoBehaviour
     {
         //attack!
         damage = (playerAttack + UnityEngine.Random.Range(-1, 1)) - enemyArmor;
-        damageDealt.text = ("You deal " + damage + " damage!");
+        info.text = ("You deal " + damage + " damage!");
         enemyHp -= damage;
         //checking if gum monster dead
         if (enemyHp <= 0)
         {
             enemyHp = 0;
             yield return new WaitForSeconds(2);
-            damageDealt.text = ("You won the battle!");
+            info.text = ("You won the battle!");
             yield return new WaitForSeconds(2);
-            damageDealt.text = ("You got a chewed gum!");
+            info.text = ("You got a chewed gum!");
             yield return new WaitForSeconds(2);
             Victory();
         }
@@ -119,7 +126,7 @@ public class TurnBasedCombat : MonoBehaviour
             yield return new WaitForSeconds(2);
             //monster attack back
             damage = (enemyAttack + UnityEngine.Random.Range(-1, 1)) - playerArmor;
-            damageDealt.text = ("The gum attacks you for " + damage + " damage!");
+            info.text = ("The gum attacks you for " + damage + " damage!");
             playerHp -= damage;
             yield return new WaitForSeconds(2);
             //back to initial window
@@ -163,5 +170,40 @@ public class TurnBasedCombat : MonoBehaviour
         PlayerPrefs.SetInt("foughtTheGoodFight", fought);
         cameBackFromFight = true;
         SceneManager.LoadScene("Overworld");
+    }
+
+    public void UseBubbleGum()
+    {
+        //has bubble gum
+        if (Player.bubbleGum > 0)
+        {
+            invtor.DeActivate();
+            infoWin.Activate();
+            StartCoroutine(WaitAfterGum());
+        }
+        //no bubble gum
+        else
+        {
+            invtor.DeActivate();
+            infoWin.Activate();
+            StartCoroutine(WaitAfterNoGum());
+        }
+    }
+
+    private IEnumerator WaitAfterGum()
+    {
+        info.text = ("You chew some gum and feel rejuvinated!");
+        Player.bubbleGum -= 1;
+        yield return new WaitForSeconds(2);
+        infoWin.DeActivate();
+        initWin.Activate();
+    }
+
+    private IEnumerator WaitAfterNoGum()
+    {
+        info.text = ("No Gum!");
+        yield return new WaitForSeconds(2);
+        infoWin.DeActivate();
+        initWin.Activate();
     }
 }
