@@ -129,6 +129,10 @@ public class TurnBasedCombat : MonoBehaviour
             info.text = ("The gum attacks you for " + damage + " damage!");
             playerHp -= damage;
             yield return new WaitForSeconds(2);
+            if (playerHp <= 0)
+            {
+                //game over
+            }
             //back to initial window
             infoWin.DeActivate();
             initWin.Activate();
@@ -194,7 +198,16 @@ public class TurnBasedCombat : MonoBehaviour
     {
         info.text = ("You chew some gum and feel rejuvinated!");
         Player.bubbleGum -= 1;
+        playerHp = 10;
         yield return new WaitForSeconds(2);
+        damage = (enemyAttack + UnityEngine.Random.Range(-1, 1)) - playerArmor;
+        info.text = ("The gum attacks you for " + damage + " damage!");
+        playerHp -= damage;
+        yield return new WaitForSeconds(2);
+        if (playerHp <= 0)
+        {
+            //game over
+        }
         infoWin.DeActivate();
         initWin.Activate();
     }
@@ -203,6 +216,14 @@ public class TurnBasedCombat : MonoBehaviour
     {
         info.text = ("No Gum!");
         yield return new WaitForSeconds(2);
+        damage = (enemyAttack + UnityEngine.Random.Range(-1, 1)) - playerArmor;
+        info.text = ("The gum attacks you for " + damage + " damage!");
+        playerHp -= damage;
+        yield return new WaitForSeconds(2);
+        if (playerHp <= 0)
+        {
+            //game over
+        }
         infoWin.DeActivate();
         initWin.Activate();
     }

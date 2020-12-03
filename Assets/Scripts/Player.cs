@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     public int armor;
     public int attack;
     public int speed;
+
+    //THE BUBBLE GUM
     public static int bubbleGum;
 
     //inventory text
@@ -41,6 +43,9 @@ public class Player : MonoBehaviour
 
     //reference enemy gameobject
     public Enemy evil;
+
+    //HP on HUD
+    public Text HP;
 
 
     void Start()
@@ -105,6 +110,12 @@ public class Player : MonoBehaviour
             //do nothing
             chewG.text = ("Chewed Gum: " + chewedGum);
             bubGum.text = ("Bubble Gum: " + bubbleGum);
+            HP.text = ("Health: " + health);
+            if ((invOn == true) && (Input.GetKeyDown("e")) && (health < 10))
+            {
+                health = 10;
+                bubbleGum -= 1;
+            }
 
             //inventory controls
             if (Input.GetKeyDown("i"))
@@ -132,6 +143,13 @@ public class Player : MonoBehaviour
             //inventory updating
             chewG.text = ("Chewed Gum: " + chewedGum);
             bubGum.text = ("Bubble Gum: " + bubbleGum);
+            HP.text = ("Health: " + health);
+
+            if ((invOn == true) && (Input.GetKeyDown("e")) && (health < 10))
+            {
+                health = 10;
+                bubbleGum -= 1;
+            }
 
             //movement code
             if ((Input.GetKeyDown("down")) || (Input.GetKeyDown("s")))
