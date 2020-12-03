@@ -13,13 +13,22 @@ public class Player : MonoBehaviour
     public int armor;
     public int attack;
     public int speed;
-    public static int gumballs = 0;
+
+    //currency
+    public static int chewedGum = 0;
+
     //int maxHealth = 10;
     //int startX;
     //int startY;
     //bool moved;
+
     bool fought = false;
     int foughtChecker = 0;
+
+    //inventory reference
+    public Inventory inv;
+    bool invOn = false;
+
 
     //reference enemy gameobject
     public Enemy evil;
@@ -192,6 +201,21 @@ public class Player : MonoBehaviour
             else
             {
                 Debug.Log("Cannot travel out of map");
+            }
+        }
+
+        //inventory controls
+        if (Input.GetKeyDown("i"))
+        {
+            if (invOn == false)
+            {
+                inv.Activate();
+                invOn = true;
+            }
+            else
+            {
+                inv.DeActivate();
+                invOn = false;
             }
         }
     }
