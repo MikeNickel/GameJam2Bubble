@@ -58,7 +58,7 @@ public class TurnBasedCombat : MonoBehaviour
         playerAttack = PlayerPrefs.GetInt("attack");
         xPos = PlayerPrefs.GetInt("xPs");
         yPos = PlayerPrefs.GetInt("yPs");
-        enemyAttack = 2;
+        enemyAttack = 3;
         enemyArmor = 2;
         enemyHp = 8;
         enemySpeed = 1;
@@ -73,11 +73,13 @@ public class TurnBasedCombat : MonoBehaviour
         pHp.text = ("Health = " + playerHp + "/10");
         pAr.text = ("Armor = " + playerArmor);
         pAt.text = ("Attack = " + playerAttack);
+        pSd.text = ("Speed = " + playerSpeed);
 
         //enemy window
         eHp.text = ("Health = " + enemyHp + "/8");
         eAr.text = ("Armor = " + enemyArmor);
         eAt.text = ("Attack = " + enemyAttack);
+        eSd.text = ("Speed = " + enemySpeed);
 
     }
 
@@ -97,7 +99,7 @@ public class TurnBasedCombat : MonoBehaviour
     private IEnumerator AttackEnemy()
     {
         //attack!
-        damage = playerAttack + UnityEngine.Random.Range(-1, 1);
+        damage = (playerAttack + UnityEngine.Random.Range(-1, 1)) - enemyArmor;
         damageDealt.text = ("You deal " + damage + " damage!");
         enemyHp -= damage;
         //checking if gum monster dead
@@ -114,7 +116,7 @@ public class TurnBasedCombat : MonoBehaviour
             //monster alive still
             yield return new WaitForSeconds(2);
             //monster attack back
-            damage = enemyAttack + UnityEngine.Random.Range(-1, 1);
+            damage = (enemyAttack + UnityEngine.Random.Range(-1, 1)) - playerArmor;
             damageDealt.text = ("The gum attacks you for " + damage + " damage!");
             playerHp -= damage;
             yield return new WaitForSeconds(2);

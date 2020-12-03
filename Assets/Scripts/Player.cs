@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
         {
             health = 10;
             armor = 1;
-            attack = 3;
+            attack = 5;
             speed = 2;
         }
         //otherwise, keep track of stats after last fight.
