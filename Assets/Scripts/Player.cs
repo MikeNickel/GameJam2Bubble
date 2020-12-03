@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public int health;
     public int armor;
     public int attack;
+    public int speed;
+    public static int gumballs = 0;
     //int maxHealth = 10;
     //int startX;
     //int startY;
@@ -66,6 +68,7 @@ public class Player : MonoBehaviour
             health = 10;
             armor = 1;
             attack = 3;
+            speed = 2;
         }
         //otherwise, keep track of stats after last fight.
         else
@@ -73,6 +76,7 @@ public class Player : MonoBehaviour
             health = PlayerPrefs.GetInt("fleeHp");
             armor = PlayerPrefs.GetInt("fleeArmor");
             attack = PlayerPrefs.GetInt("fleeAttack");
+            speed = PlayerPrefs.GetInt("fleeSpeed");
         }
     }
 
@@ -83,6 +87,7 @@ public class Player : MonoBehaviour
         PlayerPrefs.SetInt("hp", health);
         PlayerPrefs.SetInt("armor", armor);
         PlayerPrefs.SetInt("attack", attack);
+        PlayerPrefs.SetInt("fastness", speed);
 
         //movement code
         if ((Input.GetKeyDown("down"))||(Input.GetKeyDown("s")))

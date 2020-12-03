@@ -22,10 +22,12 @@ public class TurnBasedCombat : MonoBehaviour
     public int playerHp;
     public int playerArmor;
     public int playerAttack;
+    public int playerSpeed;
     //for status window
     public Text pHp;
     public Text pAr;
     public Text pAt;
+    public Text pSd;
     //where player was
     int xPos;
     int yPos;
@@ -34,10 +36,12 @@ public class TurnBasedCombat : MonoBehaviour
     int enemyAttack;
     int enemyArmor;
     int enemyHp;
+    int enemySpeed;
     //enemy status window
     public Text eHp;
     public Text eAr;
     public Text eAt;
+    public Text eSd;
 
     //attacking variable
     int damage;
@@ -54,9 +58,10 @@ public class TurnBasedCombat : MonoBehaviour
         playerAttack = PlayerPrefs.GetInt("attack");
         xPos = PlayerPrefs.GetInt("xPs");
         yPos = PlayerPrefs.GetInt("yPs");
-        enemyAttack=2;
-        enemyArmor=2;
-        enemyHp=8;
+        enemyAttack = 2;
+        enemyArmor = 2;
+        enemyHp = 8;
+        enemySpeed = 1;
         cameBackFromFight = false;
         victory = false;
     }
@@ -137,6 +142,7 @@ public class TurnBasedCombat : MonoBehaviour
         PlayerPrefs.SetInt("fleeHp", playerHp);
         PlayerPrefs.SetInt("fleeArmor", playerArmor);
         PlayerPrefs.SetInt("fleeAttack", playerAttack);
+        PlayerPrefs.SetInt("fleeSpeed", playerSpeed);
         PlayerPrefs.SetInt("whereX", xPos);
         PlayerPrefs.SetInt("whereY", yPos);
         SceneManager.LoadScene("Overworld");
@@ -148,6 +154,7 @@ public class TurnBasedCombat : MonoBehaviour
         PlayerPrefs.SetInt("fleeHp", playerHp);
         PlayerPrefs.SetInt("fleeArmor", playerArmor);
         PlayerPrefs.SetInt("fleeAttack", playerAttack);
+        PlayerPrefs.SetInt("fleeSpeed", playerSpeed);
         //set the stats after fleeing
         PlayerPrefs.SetInt("foughtTheGoodFight", fought);
         cameBackFromFight = true;
