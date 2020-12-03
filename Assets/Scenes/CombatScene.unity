@@ -243,6 +243,7 @@ MonoBehaviour:
   initWin: {fileID: 568646197}
   fWin: {fileID: 10468275}
   infoWin: {fileID: 636169875}
+  other: {fileID: 0}
   playerHp: 0
   playerArmor: 0
   playerAttack: 0
