@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public static bool lockActions = false;
     public int mapSizeX = 22;
     public int mapSizeY = 12;
     int[,] mapGrid;
@@ -13,6 +15,11 @@ public class Player : MonoBehaviour
     public int armor;
     public int attack;
     public int speed;
+    public static int bubbleGum;
+
+    //inventory text
+    public Text chewG;
+    public Text bubGum;
 
     //currency
     public static int chewedGum = 0;
@@ -29,12 +36,13 @@ public class Player : MonoBehaviour
     public Inventory inv;
     bool invOn = false;
 
+    //shop reference
+    public Shop shop;
 
     //reference enemy gameobject
     public Enemy evil;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         //startX = xPos;
@@ -46,6 +54,7 @@ public class Player : MonoBehaviour
             xPos = PlayerPrefs.GetInt("whereX");
             yPos = PlayerPrefs.GetInt("whereY");
             transform.Translate(xPos-2, yPos-2, 0);
+            chewedGum += 1;
         }
         else
         {
@@ -89,133 +98,165 @@ public class Player : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //keeping track of player stats to bring to combatscene
-        PlayerPrefs.SetInt("hp", health);
-        PlayerPrefs.SetInt("armor", armor);
-        PlayerPrefs.SetInt("attack", attack);
-        PlayerPrefs.SetInt("fastness", speed);
-
-        //movement code
-        if ((Input.GetKeyDown("down"))||(Input.GetKeyDown("s")))
+        if(lockActions == true)
         {
-            if (yPos > 1)
+            //do nothing
+
+            //inventory controls
+            if (Input.GetKeyDown("i"))
             {
-                yPos -= 1;
-                if (yPos < 0)
+                if (invOn == false)
                 {
-                    yPos = +1;
-                }
-                else if (mapGrid[xPos, yPos] == 2)
-                {
-                    yPos += 1;
+                    inv.Activate();
+                    invOn = true;
                 }
                 else
                 {
-                    PlayerPrefs.SetInt("xPs", xPos);
-                    PlayerPrefs.SetInt("yPs", yPos);
-                    transform.Translate(0, -1, 0);
-                    //moved = true;
+                    inv.DeActivate();
+                    invOn = false;
                 }
-            }
-            else
-            {
-                Debug.Log("Cannot travel out of map");
             }
         }
-        if ((Input.GetKeyDown("up"))||(Input.GetKeyDown("w")))
+        else
         {
-            if (yPos < mapSizeY - 2)
+            //keeping track of player stats to bring to combatscene
+            PlayerPrefs.SetInt("hp", health);
+            PlayerPrefs.SetInt("armor", armor);
+            PlayerPrefs.SetInt("attack", attack);
+            PlayerPrefs.SetInt("fastness", speed);
+
+            //inventory updating
+            chewG.text = ("Chewed Gum: " + chewedGum);
+            bubGum.text = ("Bubble Gum: " + bubbleGum);
+
+            //movement code
+            if ((Input.GetKeyDown("down")) || (Input.GetKeyDown("s")))
             {
-                yPos += 1;
-                if (yPos > (mapSizeY - 1))
-                {
-                    yPos = +1;
-                }
-                else if (mapGrid[xPos, yPos] == 2)
+                if (yPos > 1)
                 {
                     yPos -= 1;
+                    if (yPos < 0)
+                    {
+                        yPos = +1;
+                    }
+                    else if (mapGrid[xPos, yPos] == 2)
+                    {
+                        yPos += 1;
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetInt("xPs", xPos);
+                        PlayerPrefs.SetInt("yPs", yPos);
+                        transform.Translate(0, -1, 0);
+                        //moved = true;
+                    }
                 }
                 else
                 {
-                    PlayerPrefs.SetInt("xPs", xPos);
-                    PlayerPrefs.SetInt("yPs", yPos);
-                    transform.Translate(0, +1, 0);
-                    //moved = true;
+                    Debug.Log("Cannot travel out of map");
                 }
             }
-            else
+            if ((Input.GetKeyDown("up")) || (Input.GetKeyDown("w")))
             {
-                Debug.Log("Cannot travel out of map");
-            }
-        }
-        if ((Input.GetKeyDown("left"))||(Input.GetKeyDown("a")))
-        {
-            if (xPos > 1)
-            {
-                xPos -= 1;
-                if (xPos < 0)
+                if (yPos < mapSizeY - 2)
                 {
-                    xPos = +1;
-                }
-                else if (mapGrid[xPos, yPos] == 2)
-                {
-                    xPos += 1;
+                    yPos += 1;
+                    if (yPos > (mapSizeY - 1))
+                    {
+                        yPos = +1;
+                    }
+                    else if (mapGrid[xPos, yPos] == 2)
+                    {
+                        yPos -= 1;
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetInt("xPs", xPos);
+                        PlayerPrefs.SetInt("yPs", yPos);
+                        transform.Translate(0, +1, 0);
+                        //moved = true;
+                    }
                 }
                 else
                 {
-                    PlayerPrefs.SetInt("xPs", xPos);
-                    PlayerPrefs.SetInt("yPs", yPos);
-                    transform.Translate(-1, 0, 0);
-                   // moved = true;
+                    Debug.Log("Cannot travel out of map");
                 }
             }
-            else
+            if ((Input.GetKeyDown("left")) || (Input.GetKeyDown("a")))
             {
-                Debug.Log("Cannot travel out of map");
-            }
-        }
-        if ((Input.GetKeyDown("right"))||(Input.GetKeyDown("d")))
-        {
-            if (xPos < mapSizeX - 2)
-            {
-                xPos += 1;
-                if (xPos > (mapSizeX - 1))
-                {
-                    xPos = -1;
-                }
-                else if (mapGrid[xPos, yPos] == 2)
+                if (xPos > 1)
                 {
                     xPos -= 1;
+                    if (xPos < 0)
+                    {
+                        xPos = +1;
+                    }
+                    else if (mapGrid[xPos, yPos] == 2)
+                    {
+                        xPos += 1;
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetInt("xPs", xPos);
+                        PlayerPrefs.SetInt("yPs", yPos);
+                        transform.Translate(-1, 0, 0);
+                        // moved = true;
+                    }
                 }
                 else
                 {
-                    PlayerPrefs.SetInt("xPs", xPos);
-                    PlayerPrefs.SetInt("yPs", yPos);
-                    transform.Translate(+1, 0, 0);
-                    //moved = true;
+                    Debug.Log("Cannot travel out of map");
                 }
             }
-            else
+            if ((Input.GetKeyDown("right")) || (Input.GetKeyDown("d")))
             {
-                Debug.Log("Cannot travel out of map");
+                if (xPos < mapSizeX - 2)
+                {
+                    xPos += 1;
+                    if (xPos > (mapSizeX - 1))
+                    {
+                        xPos = -1;
+                    }
+                    else if (mapGrid[xPos, yPos] == 2)
+                    {
+                        xPos -= 1;
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetInt("xPs", xPos);
+                        PlayerPrefs.SetInt("yPs", yPos);
+                        transform.Translate(+1, 0, 0);
+                        //moved = true;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Cannot travel out of map");
+                }
             }
-        }
 
-        //inventory controls
-        if (Input.GetKeyDown("i"))
-        {
-            if (invOn == false)
+            //inventory controls
+            if (Input.GetKeyDown("i"))
             {
-                inv.Activate();
-                invOn = true;
+                if (invOn == false)
+                {
+                    inv.Activate();
+                    invOn = true;
+                }
+                else
+                {
+                    inv.DeActivate();
+                    invOn = false;
+                }
             }
-            else
+
+            //shop stuff
+            if (xPos == 5 && yPos == 12)
             {
-                inv.DeActivate();
-                invOn = false;
+                shop.Activate();
+                lockActions = true;
             }
         }
     }

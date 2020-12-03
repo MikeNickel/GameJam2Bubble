@@ -109,6 +109,8 @@ public class TurnBasedCombat : MonoBehaviour
             yield return new WaitForSeconds(2);
             damageDealt.text = ("You won the battle!");
             yield return new WaitForSeconds(2);
+            damageDealt.text = ("You got a chewed gum!");
+            yield return new WaitForSeconds(2);
             Victory();
         }
         else
