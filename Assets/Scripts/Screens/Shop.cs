@@ -16,8 +16,8 @@ public class Shop : MonoBehaviour
 
 
     //bools for is bought sword and armor
-    static bool sword = false;
-    static bool armor = false;
+    public static bool sword = false;
+    public static bool armor = false;
 
     public Sword swd;
     public Armor amr;

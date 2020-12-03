@@ -14,10 +14,10 @@ public class Enemy : MonoBehaviour
     public Player other;
     public int playerPosX;
     public int playerPosY;
-    static int enemiesDefeated=0;
+    public static int enemiesDefeated=0;
     public AchievementScreen aScreen;
     //boss appear and disappear bool
-    bool boss = false;
+    public static bool boss = false;
 
     // Start is called before the first frame update
     void Start()

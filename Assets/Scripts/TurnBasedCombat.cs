@@ -57,6 +57,7 @@ public class TurnBasedCombat : MonoBehaviour
         playerHp = PlayerPrefs.GetInt("hp");
         playerArmor = PlayerPrefs.GetInt("armor");
         playerAttack = PlayerPrefs.GetInt("attack");
+        playerSpeed = PlayerPrefs.GetInt("fastness");
         xPos = PlayerPrefs.GetInt("xPs");
         yPos = PlayerPrefs.GetInt("yPs");
         enemyAttack = 4;
@@ -131,7 +132,11 @@ public class TurnBasedCombat : MonoBehaviour
             yield return new WaitForSeconds(2);
             if (playerHp <= 0)
             {
-                //game over
+                info.text = ("You have lost to the gum...");
+                yield return new WaitForSeconds(2);
+                infoWin.DeActivate();
+                initWin.Activate();
+                SceneManager.LoadScene("GameOverScreen");
             }
             //back to initial window
             infoWin.DeActivate();
@@ -206,7 +211,11 @@ public class TurnBasedCombat : MonoBehaviour
         yield return new WaitForSeconds(2);
         if (playerHp <= 0)
         {
-            //game over
+            info.text = ("You have lost to the gum...");
+            yield return new WaitForSeconds(2);
+            infoWin.DeActivate();
+            initWin.Activate();
+            SceneManager.LoadScene("GameOverScreen");
         }
         infoWin.DeActivate();
         initWin.Activate();
@@ -222,7 +231,11 @@ public class TurnBasedCombat : MonoBehaviour
         yield return new WaitForSeconds(2);
         if (playerHp <= 0)
         {
-            //game over
+            info.text = ("You have lost to the gum...");
+            yield return new WaitForSeconds(2);
+            infoWin.DeActivate();
+            initWin.Activate();
+            SceneManager.LoadScene("GameOverScreen");
         }
         infoWin.DeActivate();
         initWin.Activate();

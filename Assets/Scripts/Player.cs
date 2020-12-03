@@ -11,10 +11,10 @@ public class Player : MonoBehaviour
     int[,] mapGrid;
     public int xPos = 2;
     public int yPos = 2;
-    public int health;
+    public static int health;
     public static int armor;
     public static int attack;
-    public int speed;
+    public static int speed;
 
     //THE BUBBLE GUM
     public static int bubbleGum;
@@ -31,12 +31,12 @@ public class Player : MonoBehaviour
     //int startY;
     //bool moved;
 
-    bool fought = false;
-    int foughtChecker = 0;
+    public static bool fought = false;
+    public static int foughtChecker = 0;
 
     //inventory reference
     public Inventory inv;
-    bool invOn = false;
+    public static bool invOn = false;
 
     //shop reference
     public Shop shop;
