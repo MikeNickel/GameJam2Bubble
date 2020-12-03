@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     public Player other;
     public int playerPosX;
     public int playerPosY;
-    int enemiesDefeated;
+    static int enemiesDefeated=0;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +23,18 @@ public class Enemy : MonoBehaviour
         pos = transform.position;
         xPos = (int) pos.x;
         yPos = (int) pos.y;
-        if (enemiesDefeated == 2)
+        //see if enough baby gums have been defeated.
+        if (enemiesDefeated == 1)
         {
-            Destroy(gameObject);
+            Debug.Log("Removing enemies: " + enemiesDefeated);
+            var enemy = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject item in enemy)
+            {
+                Destroy(item);
+            }
         }
 
-            //StartCoroutine(Hold());
+        //StartCoroutine(Hold());
     }
 
     // Update is called once per frame
@@ -37,8 +43,7 @@ public class Enemy : MonoBehaviour
         //see if player runs into enemy, start combat once this happens.
         playerPosX = other.GetXPos();
         playerPosY = other.GetYPos();
-        Debug.Log("player x =" + playerPosX);
-        Debug.Log("player y =" + playerPosY);
+        //complete mobs
         if (playerPosX == xPos && playerPosY == yPos && TurnBasedCombat.victory == false)
         {
             SceneManager.LoadScene("CombatScene");
@@ -48,6 +53,7 @@ public class Enemy : MonoBehaviour
             Died();
             TurnBasedCombat.victory = false;
             enemiesDefeated++;
+            Debug.Log("Enemies defeated: "+enemiesDefeated);
         }
         else
         {

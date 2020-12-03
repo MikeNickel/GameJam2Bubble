@@ -208,7 +208,6 @@ public class Player : MonoBehaviour
 
     public int GetXPos()
     {
-        Debug.Log("Getting x position");
         return xPos;
     }
     public int GetYPos()
