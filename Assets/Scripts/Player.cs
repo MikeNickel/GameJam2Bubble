@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
         //if no, then that means game start, have base stats.
         if(fought == false)
         {
-            health = 10;
+            health = 12;
             armor = 1;
             attack = 5;
             speed = 2;
@@ -109,11 +109,11 @@ public class Player : MonoBehaviour
         {
             //do nothing
             chewG.text = ("Chewed Gum: " + chewedGum);
-            bubGum.text = ("Bubble Gum: " + bubbleGum);
+            bubGum.text = ("Bubble Gum: " + bubbleGum + "  press e");
             HP.text = ("Health: " + health);
             if ((invOn == true) && (Input.GetKeyDown("e")) && (health < 10))
             {
-                health = 10;
+                health = 12;
                 bubbleGum -= 1;
             }
 
@@ -142,12 +142,12 @@ public class Player : MonoBehaviour
 
             //inventory updating
             chewG.text = ("Chewed Gum: " + chewedGum);
-            bubGum.text = ("Bubble Gum: " + bubbleGum);
+            bubGum.text = ("Bubble Gum: " + bubbleGum + "  press e");
             HP.text = ("Health: " + health);
 
             if ((invOn == true) && (Input.GetKeyDown("e")) && (health < 10))
             {
-                health = 10;
+                health = 12;
                 bubbleGum -= 1;
             }
 

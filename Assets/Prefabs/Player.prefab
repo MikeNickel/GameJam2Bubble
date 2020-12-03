@@ -98,10 +98,16 @@ MonoBehaviour:
   mapSizeY: 14
   xPos: 2
   yPos: 2
-  health: 10
+  health: 12
   armor: 1
   attack: 3
+  speed: 0
+  chewG: {fileID: 0}
+  bubGum: {fileID: 0}
+  inv: {fileID: 0}
+  shop: {fileID: 0}
   evil: {fileID: 2115086905231508115, guid: 5e32d92565064bb4c840da53ba17f1e4, type: 3}
+  HP: {fileID: 0}
 --- !u!212 &7230009087605682424
 SpriteRenderer:
   m_ObjectHideFlags: 0

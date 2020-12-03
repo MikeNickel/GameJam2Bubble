@@ -59,8 +59,8 @@ public class TurnBasedCombat : MonoBehaviour
         playerAttack = PlayerPrefs.GetInt("attack");
         xPos = PlayerPrefs.GetInt("xPs");
         yPos = PlayerPrefs.GetInt("yPs");
-        enemyAttack = 3;
-        enemyArmor = 2;
+        enemyAttack = 4;
+        enemyArmor = 1;
         enemyHp = 8;
         enemySpeed = 1;
         cameBackFromFight = false;
@@ -71,7 +71,7 @@ public class TurnBasedCombat : MonoBehaviour
     void Update()
     {
         //player window
-        pHp.text = ("Health = " + playerHp + "/10");
+        pHp.text = ("Health = " + playerHp + "/12");
         pAr.text = ("Armor = " + playerArmor);
         pAt.text = ("Attack = " + playerAttack);
         pSd.text = ("Speed = " + playerSpeed);
@@ -198,7 +198,7 @@ public class TurnBasedCombat : MonoBehaviour
     {
         info.text = ("You chew some gum and feel rejuvinated!");
         Player.bubbleGum -= 1;
-        playerHp = 10;
+        playerHp = 12;
         yield return new WaitForSeconds(2);
         damage = (enemyAttack + UnityEngine.Random.Range(-1, 1)) - playerArmor;
         info.text = ("The gum attacks you for " + damage + " damage!");

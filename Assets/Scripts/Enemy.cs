@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
     public int playerPosY;
     static int enemiesDefeated=0;
     public AchievementScreen aScreen;
+    //boss appear and disappear bool
+    bool boss = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +27,14 @@ public class Enemy : MonoBehaviour
         xPos = (int) pos.x;
         yPos = (int) pos.y;
         //see if enough baby gums have been defeated.
-        if (enemiesDefeated == 10)
+        if(enemiesDefeated == 5)
+        {
+            //boss appears
+            boss = true;
+
+        }
+
+        if (enemiesDefeated == 9)
         {
             aScreen.Activate();
             /*Debug.Log("Removing enemies: " + enemiesDefeated);
