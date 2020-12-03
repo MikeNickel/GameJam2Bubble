@@ -12,8 +12,8 @@ public class Player : MonoBehaviour
     public int xPos = 2;
     public int yPos = 2;
     public int health;
-    public int armor;
-    public int attack;
+    public static int armor;
+    public static int attack;
     public int speed;
 
     //THE BUBBLE GUM
@@ -145,7 +145,7 @@ public class Player : MonoBehaviour
             bubGum.text = ("Bubble Gum: " + bubbleGum + "  press e");
             HP.text = ("Health: " + health);
 
-            if ((invOn == true) && (Input.GetKeyDown("e")) && (health < 10))
+            if ((invOn == true) && (Input.GetKeyDown("e")) && (health < 12))
             {
                 health = 12;
                 bubbleGum -= 1;
