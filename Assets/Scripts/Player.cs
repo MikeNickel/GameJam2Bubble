@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
         PlayerPrefs.SetInt("attack", attack);
 
         //movement code
-        if (Input.GetKeyDown("down"))
+        if ((Input.GetKeyDown("down"))||(Input.GetKeyDown("s")))
         {
             if (yPos > 1)
             {
@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
                 Debug.Log("Cannot travel out of map");
             }
         }
-        if (Input.GetKeyDown("up"))
+        if ((Input.GetKeyDown("up"))||(Input.GetKeyDown("w")))
         {
             if (yPos < mapSizeY - 2)
             {
@@ -137,7 +137,7 @@ public class Player : MonoBehaviour
                 Debug.Log("Cannot travel out of map");
             }
         }
-        if (Input.GetKeyDown("left"))
+        if ((Input.GetKeyDown("left"))||(Input.GetKeyDown("a")))
         {
             if (xPos > 1)
             {
@@ -163,7 +163,7 @@ public class Player : MonoBehaviour
                 Debug.Log("Cannot travel out of map");
             }
         }
-        if (Input.GetKeyDown("right"))
+        if ((Input.GetKeyDown("right"))||(Input.GetKeyDown("d")))
         {
             if (xPos < mapSizeX - 2)
             {
