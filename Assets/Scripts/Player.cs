@@ -103,6 +103,8 @@ public class Player : MonoBehaviour
         if(lockActions == true)
         {
             //do nothing
+            chewG.text = ("Chewed Gum: " + chewedGum);
+            bubGum.text = ("Bubble Gum: " + bubbleGum);
 
             //inventory controls
             if (Input.GetKeyDown("i"))
@@ -283,5 +285,11 @@ public class Player : MonoBehaviour
     public int GetYPos()
     {
         return yPos;
+    }
+    //leaving shop
+    public void MoveAway()
+    {
+        yPos -= 1;
+        transform.Translate(0, -1, 0);
     }
 }
