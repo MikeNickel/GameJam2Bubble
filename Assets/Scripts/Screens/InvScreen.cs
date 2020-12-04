@@ -8,7 +8,7 @@ public class InvScreen : MonoBehaviour
     public Text ownBG;
     public Text info;
 
-    public TurnBasedCombat play;
+    public BossBattle play;
     public InfoScreen inf;
     public InitialScreen initWin;
 
