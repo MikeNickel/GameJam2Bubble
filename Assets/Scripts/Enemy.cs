@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
         {
             Died();
             TurnBasedCombat.victory = false;
-            enemiesDefeated++;
+            ++enemiesDefeated;
             Debug.Log("Enemies defeated: "+enemiesDefeated);
         }
         else

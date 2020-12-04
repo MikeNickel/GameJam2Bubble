@@ -6159,6 +6159,11 @@ PrefabInstance:
       propertyPath: aScreen
       value: 
       objectReference: {fileID: 1807481696}
+    - target: {fileID: 2115086905231508115, guid: 5e32d92565064bb4c840da53ba17f1e4,
+        type: 3}
+      propertyPath: boi
+      value: 
+      objectReference: {fileID: 913433490}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e32d92565064bb4c840da53ba17f1e4, type: 3}
 --- !u!1 &519420028
@@ -7464,6 +7469,11 @@ PrefabInstance:
       propertyPath: aScreen
       value: 
       objectReference: {fileID: 1807481696}
+    - target: {fileID: 2115086905231508115, guid: 5e32d92565064bb4c840da53ba17f1e4,
+        type: 3}
+      propertyPath: boi
+      value: 
+      objectReference: {fileID: 913433490}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e32d92565064bb4c840da53ba17f1e4, type: 3}
 --- !u!1 &1299423951
@@ -8539,6 +8549,11 @@ PrefabInstance:
       propertyPath: aScreen
       value: 
       objectReference: {fileID: 1807481696}
+    - target: {fileID: 2115086905231508115, guid: 5e32d92565064bb4c840da53ba17f1e4,
+        type: 3}
+      propertyPath: boi
+      value: 
+      objectReference: {fileID: 913433490}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e32d92565064bb4c840da53ba17f1e4, type: 3}
 --- !u!1 &1762018226
@@ -8904,6 +8919,11 @@ PrefabInstance:
       propertyPath: aScreen
       value: 
       objectReference: {fileID: 1807481696}
+    - target: {fileID: 2115086905231508115, guid: 5e32d92565064bb4c840da53ba17f1e4,
+        type: 3}
+      propertyPath: boi
+      value: 
+      objectReference: {fileID: 913433490}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e32d92565064bb4c840da53ba17f1e4, type: 3}
 --- !u!1 &1807481692
