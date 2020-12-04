@@ -11,6 +11,7 @@ public class TurnBasedCombat : MonoBehaviour
     public CombatScreen fWin;
     public InfoScreen infoWin;
     public InvScreen invtor;
+    public Died begone;
 
     //audio
     //public AudioClip victoryJingle;
@@ -121,6 +122,7 @@ public class TurnBasedCombat : MonoBehaviour
             enemyHp = 0;
             yield return new WaitForSeconds(2);
             info.text = ("You won the battle!");
+            begone.Dissappear();
             //audioSource.PlayOneShot(victoryJingle, 1F);
             yield return new WaitForSeconds(2);
             info.text = ("You got a chewed gum!");

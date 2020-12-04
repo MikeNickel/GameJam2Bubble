@@ -11,6 +11,7 @@ public class BossBattle : MonoBehaviour
     public CombatScreen fWin;
     public InfoScreen infoWin;
     public InvScreenBoss invtor;
+    public Died begone;
 
     //reference enemy script on enemy objects
     //public Enemy other;
@@ -116,6 +117,7 @@ public class BossBattle : MonoBehaviour
             enemyHp = 0;
             yield return new WaitForSeconds(2);
             info.text = ("You won the battle!");
+            begone.Dissappear();
             yield return new WaitForSeconds(2);
             info.text = ("You got a chewed gum!");
             yield return new WaitForSeconds(2);
