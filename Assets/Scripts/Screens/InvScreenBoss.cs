@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InvScreen : MonoBehaviour
+public class InvScreenBoss : MonoBehaviour
 {
     public Text ownBG;
     public Text info;
 
-    public TurnBasedCombat play;
+    public BossBattle play;
     public InfoScreen inf;
     public InitialScreen initWin;
 

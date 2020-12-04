@@ -12,6 +12,10 @@ public class TurnBasedCombat : MonoBehaviour
     public InfoScreen infoWin;
     public InvScreen invtor;
 
+    //audio
+    //public AudioClip victoryJingle;
+    //AudioSource audioSource;
+
     //reference enemy script on enemy objects
     //public Enemy other;
 
@@ -54,6 +58,7 @@ public class TurnBasedCombat : MonoBehaviour
 
     void Start()
     {
+        //audioSource = GetComponent<AudioSource>();
         playerHp = PlayerPrefs.GetInt("hp");
         playerArmor = PlayerPrefs.GetInt("armor");
         playerAttack = PlayerPrefs.GetInt("attack");
@@ -116,6 +121,7 @@ public class TurnBasedCombat : MonoBehaviour
             enemyHp = 0;
             yield return new WaitForSeconds(2);
             info.text = ("You won the battle!");
+            //audioSource.PlayOneShot(victoryJingle, 1F);
             yield return new WaitForSeconds(2);
             info.text = ("You got a chewed gum!");
             yield return new WaitForSeconds(2);
@@ -129,15 +135,17 @@ public class TurnBasedCombat : MonoBehaviour
             damage = (enemyAttack + UnityEngine.Random.Range(-1, 1)) - playerArmor;
             info.text = ("The gum attacks you for " + damage + " damage!");
             playerHp -= damage;
-            yield return new WaitForSeconds(2);
             if (playerHp <= 0)
             {
+                playerHp = 0;
+                yield return new WaitForSeconds(2);
                 info.text = ("You have lost to the gum...");
                 yield return new WaitForSeconds(2);
                 infoWin.DeActivate();
                 initWin.Activate();
                 SceneManager.LoadScene("GameOverScreen");
             }
+            yield return new WaitForSeconds(2);
             //back to initial window
             infoWin.DeActivate();
             initWin.Activate();
@@ -208,15 +216,17 @@ public class TurnBasedCombat : MonoBehaviour
         damage = (enemyAttack + UnityEngine.Random.Range(-1, 1)) - playerArmor;
         info.text = ("The gum attacks you for " + damage + " damage!");
         playerHp -= damage;
-        yield return new WaitForSeconds(2);
         if (playerHp <= 0)
         {
+            playerHp = 0;
+            yield return new WaitForSeconds(2);
             info.text = ("You have lost to the gum...");
             yield return new WaitForSeconds(2);
             infoWin.DeActivate();
             initWin.Activate();
             SceneManager.LoadScene("GameOverScreen");
         }
+        yield return new WaitForSeconds(2);
         infoWin.DeActivate();
         initWin.Activate();
     }
@@ -228,15 +238,17 @@ public class TurnBasedCombat : MonoBehaviour
         damage = (enemyAttack + UnityEngine.Random.Range(-1, 1)) - playerArmor;
         info.text = ("The gum attacks you for " + damage + " damage!");
         playerHp -= damage;
-        yield return new WaitForSeconds(2);
         if (playerHp <= 0)
         {
+            playerHp = 0;
+            yield return new WaitForSeconds(2);
             info.text = ("You have lost to the gum...");
             yield return new WaitForSeconds(2);
             infoWin.DeActivate();
             initWin.Activate();
             SceneManager.LoadScene("GameOverScreen");
         }
+        yield return new WaitForSeconds(2);
         infoWin.DeActivate();
         initWin.Activate();
     }

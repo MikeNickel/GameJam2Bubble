@@ -10,7 +10,7 @@ public class BossBattle : MonoBehaviour
     public InitialScreen initWin;
     public CombatScreen fWin;
     public InfoScreen infoWin;
-    public InvScreen invtor;
+    public InvScreenBoss invtor;
 
     //reference enemy script on enemy objects
     //public Enemy other;
@@ -129,9 +129,10 @@ public class BossBattle : MonoBehaviour
             damage = (enemyAttack + UnityEngine.Random.Range(-1, 1)) - playerArmor;
             info.text = ("The gum attacks you for " + damage + " damage!");
             playerHp -= damage;
-            yield return new WaitForSeconds(2);
             if (playerHp <= 0)
             {
+                playerHp = 0;
+                yield return new WaitForSeconds(2);
                 info.text = ("You have lost to the gum...");
                 yield return new WaitForSeconds(2);
                 infoWin.DeActivate();
@@ -139,6 +140,7 @@ public class BossBattle : MonoBehaviour
                 SceneManager.LoadScene("GameOverScreen");
             }
             //back to initial window
+            yield return new WaitForSeconds(2);
             infoWin.DeActivate();
             initWin.Activate();
         }
@@ -208,15 +210,17 @@ public class BossBattle : MonoBehaviour
         damage = (enemyAttack + UnityEngine.Random.Range(-1, 1)) - playerArmor;
         info.text = ("The gum attacks you for " + damage + " damage!");
         playerHp -= damage;
-        yield return new WaitForSeconds(2);
         if (playerHp <= 0)
         {
+            playerHp = 0;
+            yield return new WaitForSeconds(2);
             info.text = ("You have lost to the gum...");
             yield return new WaitForSeconds(2);
             infoWin.DeActivate();
             initWin.Activate();
             SceneManager.LoadScene("GameOverScreen");
         }
+        yield return new WaitForSeconds(2);
         infoWin.DeActivate();
         initWin.Activate();
     }
@@ -228,15 +232,17 @@ public class BossBattle : MonoBehaviour
         damage = (enemyAttack + UnityEngine.Random.Range(-1, 1)) - playerArmor;
         info.text = ("The gum attacks you for " + damage + " damage!");
         playerHp -= damage;
-        yield return new WaitForSeconds(2);
         if (playerHp <= 0)
         {
+            playerHp = 0;
+            yield return new WaitForSeconds(2);
             info.text = ("You have lost to the gum...");
             yield return new WaitForSeconds(2);
             infoWin.DeActivate();
             initWin.Activate();
             SceneManager.LoadScene("GameOverScreen");
         }
+        yield return new WaitForSeconds(2);
         infoWin.DeActivate();
         initWin.Activate();
     }
