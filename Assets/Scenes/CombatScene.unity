@@ -1946,7 +1946,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'PlayerName
+  m_Text: 'Gum Hater
 
 '
 --- !u!222 &659741531
@@ -3827,7 +3827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ownBG: {fileID: 8965555}
   info: {fileID: 66103566}
-  play: {fileID: 63241002}
+  play: {fileID: 0}
   inf: {fileID: 636169875}
   initWin: {fileID: 568646197}
 --- !u!114 &1758068853

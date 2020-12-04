@@ -348,7 +348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 430.4, y: -127.73}
+  m_AnchoredPosition: {x: 386.13, y: -127.73}
   m_SizeDelta: {x: 172.26538, y: 255.46884}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &312310699
@@ -7765,7 +7765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.7719126, a: 0.77254903}
+  m_Color: {r: 1, g: 0, b: 0.7719126, a: 0.8784314}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -9805,7 +9805,7 @@ PrefabInstance:
     - target: {fileID: 6644420995541983853, guid: fbff7fe786a70b64cab007c68e1009b2,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbff7fe786a70b64cab007c68e1009b2, type: 3}
