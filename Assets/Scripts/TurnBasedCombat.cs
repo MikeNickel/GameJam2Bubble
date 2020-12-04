@@ -127,7 +127,14 @@ public class TurnBasedCombat : MonoBehaviour
             yield return new WaitForSeconds(2);
             info.text = ("You got a chewed gum!");
             yield return new WaitForSeconds(2);
-            Victory();
+            infoWin.DeActivate();
+            initWin.Activate();
+            //say player won
+            victory = true;
+            PlayerPrefs.SetInt("whereX", xPos);
+            PlayerPrefs.SetInt("whereY", yPos);
+            Flee();
+            //SceneManager.LoadScene("Overworld");
         }
         else
         {
@@ -160,15 +167,8 @@ public class TurnBasedCombat : MonoBehaviour
         initWin.Activate();
     }
 
-    void Victory()
+    /*void Victory()
     {
-        //return combat scene to original state
-        infoWin.DeActivate();
-        initWin.Activate();
-        //say player won
-        victory = true;
-        cameBackFromFight = true;
-        //keep track of victory variables
         PlayerPrefs.SetInt("fleeHp", playerHp);
         PlayerPrefs.SetInt("fleeArmor", playerArmor);
         PlayerPrefs.SetInt("fleeAttack", playerAttack);
@@ -176,7 +176,7 @@ public class TurnBasedCombat : MonoBehaviour
         PlayerPrefs.SetInt("whereX", xPos);
         PlayerPrefs.SetInt("whereY", yPos);
         SceneManager.LoadScene("Overworld");
-    }
+    }*/
 
     public void Flee()
     {
