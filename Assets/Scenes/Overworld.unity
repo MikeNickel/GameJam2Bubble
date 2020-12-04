@@ -7024,6 +7024,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 868275377}
   m_CullTransparentMesh: 0
+--- !u!114 &913433490 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 210258466, guid: fbff7fe786a70b64cab007c68e1009b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 6644420996544612564}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0bee2178550c54396ec687cb3a667c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1015753646
 GameObject:
   m_ObjectHideFlags: 0
@@ -9712,6 +9724,11 @@ PrefabInstance:
       propertyPath: aScreen
       value: 
       objectReference: {fileID: 1807481696}
+    - target: {fileID: 2115086905231508115, guid: 5e32d92565064bb4c840da53ba17f1e4,
+        type: 3}
+      propertyPath: boi
+      value: 
+      objectReference: {fileID: 913433490}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e32d92565064bb4c840da53ba17f1e4, type: 3}
 --- !u!1001 &6644420996544612564
@@ -9721,6 +9738,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 210258466, guid: fbff7fe786a70b64cab007c68e1009b2, type: 3}
+      propertyPath: other
+      value: 
+      objectReference: {fileID: 429233693}
     - target: {fileID: 6644420995541983848, guid: fbff7fe786a70b64cab007c68e1009b2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9780,6 +9801,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GreenGuy_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644420995541983853, guid: fbff7fe786a70b64cab007c68e1009b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbff7fe786a70b64cab007c68e1009b2, type: 3}

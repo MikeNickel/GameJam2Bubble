@@ -165,7 +165,7 @@ public class BossBattle : MonoBehaviour
         PlayerPrefs.SetInt("fleeSpeed", playerSpeed);
         PlayerPrefs.SetInt("whereX", xPos);
         PlayerPrefs.SetInt("whereY", yPos);
-        SceneManager.LoadScene("WinningScene");
+        SceneManager.LoadScene("WinningScreen");
     }
 
     public void Flee()

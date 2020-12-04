@@ -12,12 +12,14 @@ public class Enemy : MonoBehaviour
     public int xPos;
     public int yPos;
     public Player other;
+    public SummonBoss boi;
     public int playerPosX;
     public int playerPosY;
     public static int enemiesDefeated=0;
     public AchievementScreen aScreen;
     //boss appear and disappear bool
     public static bool boss = false;
+    public static bool bossBeat = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,10 +29,11 @@ public class Enemy : MonoBehaviour
         xPos = (int) pos.x;
         yPos = (int) pos.y;
         //see if enough baby gums have been defeated.
-        if(enemiesDefeated == 5)
+        if(enemiesDefeated >= 5 && bossBeat == false)
         {
             //boss appears
             boss = true;
+            boi.Activate();
 
         }
 
@@ -96,8 +99,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private IEnumerator Hold()
+    /*private IEnumerator Hold()
     {
         yield return new WaitForSeconds(2f);
-    }
+    }*/
 }
